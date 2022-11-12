@@ -1,0 +1,36 @@
+version: '3'
+
+networks:
+  network-1:
+    driver: bridge
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    command: --innodb-use-native-aio=0
+    tty: true
+    restart: always
+    networks:
+      - network-1
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+
+  app:
+    depends_on:
+      - db
+    build:
+      context: ./node-example
+      dockerfile: Dockerfile.dev
+    container_name: app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 15s docker-entrypoint.sh
+    tty: true
+    ports:
+      - "3000:3000"
+    networks:
+      - network-1
+    volumes:
+      - ./node-example:/usr/src/app
