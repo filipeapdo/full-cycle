@@ -1,0 +1,26 @@
+version: '3'
+
+networks:
+  network-1:
+    driver: bridge
+
+services:
+  laravel:
+    # image: filipeapdo/fc-laravel-example:prod
+    build:
+      context: ./laravel-example
+      dockerfile: Dockerfile.prod
+    container_name: laravel
+    networks:
+      - network-1
+
+  nginx:
+    # image: filipeapdo/fc-nginx-example:prod
+    build:
+      context: ./nginx-example
+      dockerfile: Dockerfile.prod
+    container_name: nginx
+    networks:
+      - network-1
+    ports:
+      - "8080:80"
