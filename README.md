@@ -13,6 +13,7 @@ some **very** basic docker commands :smile:
 * docker rm $(docker ps -a -q) -f ::: mind blowing to remove all containers :smile:.
 
 * docker exec [-it] `container` `comamand` ::: executes the command inside the container. 
+* docker attach `container` ::: executes the command passed on "run command" from container.
 
 ### mount, bind, volume
 * local paths
@@ -39,4 +40,17 @@ some **very** basic docker commands :smile:
   * Docker file example on /docker/Dockerfile
   * docker build -t `container-registry-username-or-path/image-name:tag /path/to/local/Dockerfile` ::: builds an image based on Docker file and tag it (-t) with the followed options.
   * 
+
+### netwkorks
+* docker network ls, prune ... ::: interface commands with docker network.
+
+* bridge driver
+  * docker network create --driver bridge network-1 ::: creates a docker network.
+  * docker run ... --name `container` --network network-1 ... ::: run a container with a given network.
+  * docker network connect network-1 `container` ::: connects a cotainer to a given network.
+
+* host driver
+  * docker run -d --network host nginx ::: run a container in a bridge mode - same host netwrok.
+
+* accessing a resource from container to host ::: e.g.: `curl http://host.docker.internal:port`
 
