@@ -57,6 +57,10 @@ some **very** basic docker commands :smile:
 ### laravel-example
 * the idea is to have a full laravel framework working inside the container, see docker/laravel-example/Dockerfile.
   * docker build -t `container-registry-username-or-path/image-name:tag /path/to/local/Dockerfile-folder` -f path/to;local/Dockerfile.
+* using nginx as reverse proxy to serve a php server with laravel framework
+  * docker network create --driver bridge network-1
+  * docker run -d --network network-1 --name laravel filipeapdo/fc-laravel-example:prod
+  * docker run -d --network network-1 --name nginx -p 8080:80 filipeapdo/fc-nginx-example:prod
 
 ### node-example
 * docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 node:15 bash
