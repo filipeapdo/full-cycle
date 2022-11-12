@@ -54,3 +54,6 @@ some **very** basic docker commands :smile:
 
 * accessing a resource from container to host ::: e.g.: `curl http://host.docker.internal:port`
 
+### laravel-example
+* the idea is to have a full laravel framework working inside the container, see docker/laravel-example/Dockerfile.
+
