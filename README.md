@@ -39,7 +39,6 @@ some **very** basic docker commands :smile:
 * build
   * Docker file example on /docker/Dockerfile
   * docker build -t `container-registry-username-or-path/image-name:tag /path/to/local/Dockerfile` ::: builds an image based on Docker file and tag it (-t) with the followed options.
-  * 
 
 ### netwkorks
 * docker network ls, prune ... ::: interface commands with docker network.
@@ -63,7 +62,17 @@ some **very** basic docker commands :smile:
   * docker run -d --network network-1 --name nginx -p 8080:80 filipeapdo/fc-nginx-example:prod
 
 ### node-example
-* docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 node:15 bash
+* simple example
+  * docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 node:15 bash
   * npm i yarn
   * yarn init
   * yarn add express
+* node + mysql
+  * create table people (id int not null auto_increment, name varchar(45), primary key (id));
+  * checkout the "depends_on" and "dockerize"
+
+### docker-compose
+* docker-compose up :: simply run the docker-compose.yaml file.
+* docker-compode up -d :: detached mode.
+* docker-compode ps ::: show containers running
+* docker-compose up -d --build :: will build the images if neede be.
