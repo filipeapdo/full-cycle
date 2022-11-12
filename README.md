@@ -10,6 +10,7 @@ some **very** basic docker commands :smile:
 * docker run --name `name` `container` ::: give a name to the container.
 
 * docker rm [-f] `container` ::: removes the container, -f allways the things the rough!
+* docker rm $(docker ps -a -q) -f ::: mind blowing to remove all containers :smile:.
 
 * docker exec [-it] `container` `comamand` ::: executes the command inside the container. 
 
@@ -28,4 +29,14 @@ some **very** basic docker commands :smile:
   * docker run -v `volume-name:/path/to/container/folder` ::: binds a volume to a container folder.
 
   * docker run --mount type=volume,source=`volume-name`,target=target=/path/to/container/folder ::: binds a volume to a container folder.
+
+### images
+* basic
+  * docker images ::: list all local images on host.
+  * docker rmi ::: remove images
+
+* build
+  * Docker file example on /docker/Dockerfile
+  * docker build -t `container-registry-username-or-path/image-name:tag /path/to/local/Dockerfile` ::: builds an image based on Docker file and tag it (-t) with the followed options.
+  * 
 
