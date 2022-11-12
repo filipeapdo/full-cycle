@@ -59,3 +59,6 @@ some **very** basic docker commands :smile:
 
 ### node-example
 * docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 node:15 bash
+  * npm i yarn
+  * yarn init
+  * yarn add express
